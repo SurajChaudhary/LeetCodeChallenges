@@ -17,9 +17,9 @@ public class WeightedGraph {
 
     public void addEdge(int from, int to, int cost) {
         Edge edge = new Edge(from, to, cost);
-        if(this.graph.containsKey(from)) {
+        if (this.graph.containsKey(from)) {
             this.graph.get(from).add(edge);
-        }else {
+        } else {
             List<Edge> edges = new ArrayList<>();
             edges.add(edge);
             this.graph.put(from, edges);
@@ -30,9 +30,9 @@ public class WeightedGraph {
         return this.graph.getOrDefault(from, new ArrayList<>());
     }
 
-    public  void print() {
+    public void print() {
         this.graph.forEach((key, value) -> {
-            System.out.println("Edges from "+ key + " are: " + value);
+            System.out.println("Edges from " + key + " are: " + value);
         });
     }
 }

@@ -88,7 +88,7 @@ public class TarjanAlgorithmTest {
         }
 
         if (ids[node] == low[node]) {
-            for(int n = stk.pop();;n=stk.pop()) {
+            for (int n = stk.pop(); ; n = stk.pop()) {
                 onStack[n] = false;
                 low[n] = ids[node];
                 if (node == n) break;

@@ -1,7 +1,5 @@
 package datastructures.graphs.directed;
 
-import java.util.Set;
-
 public class TransposeOfGraphTest {
     public static void main(String[] args) {
         AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(5, true);
@@ -20,13 +18,11 @@ public class TransposeOfGraphTest {
 
     private static AdjacencyListBasedGraph transpose(AdjacencyListBasedGraph graph) {
         AdjacencyListBasedGraph transposedGraph = new AdjacencyListBasedGraph(graph.getVertices(), true);
-        Set<Integer> nodes = graph.getNodes();
-        for (int node : nodes) {
+        for (int node : graph.getNodes()) {
             for (int neighbour : graph.getNeighboursOf(node)) {
                 transposedGraph.addEdge(neighbour, node);
             }
         }
         return transposedGraph;
-
     }
 }

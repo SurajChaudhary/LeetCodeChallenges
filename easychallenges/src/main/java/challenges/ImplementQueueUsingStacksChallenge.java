@@ -22,49 +22,59 @@ class MyQueue {
 
     int curr_size;
 
-    /** Initialize your data structure here. */
+    /**
+     * Initialize your data structure here.
+     */
     public MyQueue() {
         curr_size = 0;
     }
 
-    /** Push element x to the back of queue. */
+    /**
+     * Push element x to the back of queue.
+     */
     public void push(int x) {
-        if(s1.isEmpty() && s2.isEmpty()) {
+        if (s1.isEmpty() && s2.isEmpty()) {
             s1.push(x);
-        }else {
-            while(!s2.isEmpty()) {
+        } else {
+            while (!s2.isEmpty()) {
                 int curr = s2.pop();
                 s1.push(curr);
             }
             s1.push(x);
         }
-        while(!s1.isEmpty()) {
+        while (!s1.isEmpty()) {
             curr_size++;
             int curr = s1.pop();
             s2.push(curr);
         }
     }
 
-    /** Removes the element from in front of queue and returns that element. */
+    /**
+     * Removes the element from in front of queue and returns that element.
+     */
     public int pop() {
-        if(!s2.isEmpty()) {
+        if (!s2.isEmpty()) {
             curr_size--;
             return s2.pop();
-        }else {
+        } else {
             return -1;
         }
     }
 
-    /** Get the front element. */
+    /**
+     * Get the front element.
+     */
     public int peek() {
-        if(!s2.isEmpty()) {
+        if (!s2.isEmpty()) {
             return s2.peek();
-        }else {
+        } else {
             return -1;
         }
     }
 
-    /** Returns whether the queue is empty. */
+    /**
+     * Returns whether the queue is empty.
+     */
     public boolean empty() {
         return s2.isEmpty();
     }

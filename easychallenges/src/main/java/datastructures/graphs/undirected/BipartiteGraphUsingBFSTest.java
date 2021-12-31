@@ -8,6 +8,7 @@ public class BipartiteGraphUsingBFSTest {
     static final int NO_COLOR = -1;
     static final int BLUE = 0;
     static final int GREEN = 1;
+
     public static void main(String[] args) {
         int V = 8;
         AdjacencyListBasedGraph listBasedGraph = new AdjacencyListBasedGraph(V);
@@ -23,7 +24,7 @@ public class BipartiteGraphUsingBFSTest {
 
         listBasedGraph.print();
         System.out.println("=======================================================");
-        boolean isBipartite = isGraphBipartite(0,listBasedGraph, V);
+        boolean isBipartite = isGraphBipartite(0, listBasedGraph, V);
         System.out.println("The graph " + (isBipartite ? "is a Bipartite graph!!!" : "is not a Bipartite graph!!!"));
     }
 
@@ -34,16 +35,16 @@ public class BipartiteGraphUsingBFSTest {
         q.add(start);
         colors[start] = BLUE;
 
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             int currNode = q.poll();
-            for(int adj : graph.getNeighboursOf(currNode)) {
-                if(colors[adj] == NO_COLOR) {
-                    int color = getColor(currNode,colors);
+            for (int adj : graph.getNeighboursOf(currNode)) {
+                if (colors[adj] == NO_COLOR) {
+                    int color = getColor(currNode, colors);
                     colors[adj] = color;
                     q.add(adj);
-                } else if(colors[adj] == colors[currNode]) {
+                } else if (colors[adj] == colors[currNode]) {
                     return false;
-                }else {
+                } else {
                     continue;
                 }
             }
@@ -53,8 +54,8 @@ public class BipartiteGraphUsingBFSTest {
     }
 
     private static int getColor(int node, int[] colors) {
-        if(colors[node] == BLUE) return GREEN;
-        if(colors[node] == GREEN) return BLUE;
+        if (colors[node] == BLUE) return GREEN;
+        if (colors[node] == GREEN) return BLUE;
         return NO_COLOR;
     }
 }

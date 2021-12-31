@@ -4,8 +4,8 @@ public class NumberOfIslandTest {
     public static void main(String[] args) {
         int[][] grid = new int[8][12];
 
-        for(int row = 0; row < 8; row++) {
-            for(int col=0; col < 12; col++) {
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 12; col++) {
                 grid[row][col] = 0;
             }
         }
@@ -24,9 +24,9 @@ public class NumberOfIslandTest {
 
     private static int numberOfIslands(int[][] grid) {
         int count = 0;
-        for(int row = 0; row < 8; row++) {
-            for(int col = 0; col < 12; col++) {
-                if(grid[row][col] == 1) {
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 12; col++) {
+                if (grid[row][col] == 1) {
                     count += dfs(row, col, grid, 8, 12);
                 }
             }
@@ -35,15 +35,15 @@ public class NumberOfIslandTest {
     }
 
     private static int dfs(int row, int col, int[][] grid, int ROWS, int COLS) {
-        if(row < 0 || col < 0 || row >= ROWS || col >= COLS || grid[row][col] == 0) {
+        if (row < 0 || col < 0 || row >= ROWS || col >= COLS || grid[row][col] == 0) {
             return 0;
         }
 
         grid[row][col] = 0;
-        dfs(row-1, col, grid,ROWS,COLS);
-        dfs(row+1, col, grid,ROWS,COLS);
-        dfs(row, col-1, grid,ROWS,COLS);
-        dfs(row, col+1, grid,ROWS,COLS);
+        dfs(row - 1, col, grid, ROWS, COLS);
+        dfs(row + 1, col, grid, ROWS, COLS);
+        dfs(row, col - 1, grid, ROWS, COLS);
+        dfs(row, col + 1, grid, ROWS, COLS);
 
         return 1;
     }

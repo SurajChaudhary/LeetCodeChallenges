@@ -17,16 +17,16 @@ public class DijkstraTest {
 
         int start = 0;
         int end = 4;
-        boolean [] visited = new boolean[nodes];
-        double [] dist = new double[nodes];
+        boolean[] visited = new boolean[nodes];
+        double[] dist = new double[nodes];
         Arrays.fill(dist, Double.POSITIVE_INFINITY);
-        int [] prev = new int[nodes];
+        int[] prev = new int[nodes];
         Arrays.fill(prev, -1);
         final double EPS = 1e-6;
         PriorityQueue<Node> priorityQueue = new PriorityQueue<>(2 * nodes, new Comparator<Node>() {
             @Override
             public int compare(Node node1, Node node2) {
-                if(Math.abs(node1.getDistance()-node2.getDistance()) < EPS) return 0;
+                if (Math.abs(node1.getDistance() - node2.getDistance()) < EPS) return 0;
                 return (node1.getDistance() - node2.getDistance()) > 0 ? 1 : -1;
             }
         });
@@ -40,11 +40,11 @@ public class DijkstraTest {
 
     private static void printPathBetween(int start, int end, int[] prev) {
         List<Integer> path = new ArrayList<>();
-        for(int at = end; prev[at]!=-1;at = prev[at]) {
+        for (int at = end; prev[at] != -1; at = prev[at]) {
             path.add(at);
         }
         Collections.reverse(path);
-        path.add(0,start);
+        path.add(0, start);
         System.out.println(path);
     }
 
@@ -52,19 +52,19 @@ public class DijkstraTest {
         dist[start] = 0;
         priorityQueue.offer(new Node(start, 0));
 
-        while(!priorityQueue.isEmpty()) {
+        while (!priorityQueue.isEmpty()) {
             Node node = priorityQueue.poll();
             visited[node.getValue()] = true;
 
-            if(dist[node.getValue()] < node.getDistance()) continue;
+            if (dist[node.getValue()] < node.getDistance()) continue;
 
             List<Edge> outwardEdges = graph.getOutwardEdgesOf((int) node.getValue());
-            if(outwardEdges == null) continue;
-            for(Edge edge : outwardEdges) {
-                if(visited[edge.getTo()]) continue;
+            if (outwardEdges == null) continue;
+            for (Edge edge : outwardEdges) {
+                if (visited[edge.getTo()]) continue;
 
                 double newDist = dist[edge.getFrom()] + edge.getCost();
-                if(newDist < dist[edge.getTo()]) {
+                if (newDist < dist[edge.getTo()]) {
                     dist[edge.getTo()] = newDist;
                     prev[edge.getTo()] = edge.getFrom();
                     priorityQueue.offer(new Node(edge.getTo(), dist[edge.getTo()]));

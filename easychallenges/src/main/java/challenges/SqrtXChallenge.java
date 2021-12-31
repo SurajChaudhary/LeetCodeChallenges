@@ -10,15 +10,15 @@ public class SqrtXChallenge {
         int end = x;
         int res = 0;
 
-        while(start <= end) {
-            int mid = start+(end-start)/2;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
 
-            if(mid*mid == x) {
+            if (mid * mid == x) {
                 return mid;
-            } else if(mid > x/mid) {
-                end = mid-1;
-            }else {
-                start = mid+1;
+            } else if (mid > x / mid) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
                 res = mid;
             }
 

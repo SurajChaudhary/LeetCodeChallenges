@@ -21,7 +21,7 @@ public class LowLinkValueTest {
         int[] lowLink = new int[nodes];
         Arrays.fill(lowLink, -1);
 
-        for(int node : graph.getNodes()) {
+        for (int node : graph.getNodes()) {
             if (!visited[node]) {
                 populateLowLinkValues(node, visited, lowLink, stk, onStack, graph);
             }
@@ -30,10 +30,10 @@ public class LowLinkValueTest {
         List<String> bridges = getBridges(graph, lowLink);
         System.out.println("Bridges are: " + bridges);
         Map<Integer, List<Integer>> components = new HashMap<>();
-        for(int index = 0; index < lowLink.length; index++) {
-            if(components.containsKey(lowLink[index])) {
+        for (int index = 0; index < lowLink.length; index++) {
+            if (components.containsKey(lowLink[index])) {
                 components.get(lowLink[index]).add(index);
-            }else {
+            } else {
                 List<Integer> elements = new ArrayList<>();
                 elements.add(index);
                 components.put(lowLink[index], elements);
@@ -46,7 +46,7 @@ public class LowLinkValueTest {
         boolean[] visited = new boolean[graph.getVertices()];
         Arrays.fill(visited, false);
         List<String> bridges = new ArrayList<>();
-        for(int node : graph.getNodes()) {
+        for (int node : graph.getNodes()) {
             if (!visited[node]) {
                 bridges(node, visited, lowLink, graph, bridges);
             }
@@ -56,11 +56,11 @@ public class LowLinkValueTest {
 
     private static void bridges(int from, boolean[] visited, int[] lowLink, AdjacencyListBasedGraph graph, List<String> bridges) {
         visited[from] = true;
-        for(int to : graph.getNeighboursOf(from)) {
+        for (int to : graph.getNeighboursOf(from)) {
             if (!visited[to]) {
                 bridges(to, visited, lowLink, graph, bridges);
             }
-            if(from < lowLink[to]) {
+            if (from < lowLink[to]) {
                 bridges.add(from + " - " + to);
             }
         }
@@ -68,34 +68,34 @@ public class LowLinkValueTest {
 
     private static AdjacencyListBasedGraph getGraph1(int nodes) {
         AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(nodes, true);
-        graph.addEdge(3,4);
-        graph.addEdge(3,7);
-        graph.addEdge(7,3);
-        graph.addEdge(7,5);
-        graph.addEdge(4,5);
-        graph.addEdge(5,6);
-        graph.addEdge(5,0);
-        graph.addEdge(6,0);
-        graph.addEdge(6,2);
-        graph.addEdge(6,4);
-        graph.addEdge(0,1);
-        graph.addEdge(1,2);
-        graph.addEdge(2,0);
+        graph.addEdge(3, 4);
+        graph.addEdge(3, 7);
+        graph.addEdge(7, 3);
+        graph.addEdge(7, 5);
+        graph.addEdge(4, 5);
+        graph.addEdge(5, 6);
+        graph.addEdge(5, 0);
+        graph.addEdge(6, 0);
+        graph.addEdge(6, 2);
+        graph.addEdge(6, 4);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 0);
         return graph;
     }
 
     private static AdjacencyListBasedGraph getGraph2(int nodes) {
         AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(nodes, true);
-        graph.addEdge(0,1);
-        graph.addEdge(1,2);
-        graph.addEdge(2,0);
-        graph.addEdge(2,3);
-        graph.addEdge(2,5);
-        graph.addEdge(3,4);
-        graph.addEdge(5,6);
-        graph.addEdge(6,7);
-        graph.addEdge(7,8);
-        graph.addEdge(8,5);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 0);
+        graph.addEdge(2, 3);
+        graph.addEdge(2, 5);
+        graph.addEdge(3, 4);
+        graph.addEdge(5, 6);
+        graph.addEdge(6, 7);
+        graph.addEdge(7, 8);
+        graph.addEdge(8, 5);
         return graph;
     }
 
@@ -109,15 +109,15 @@ public class LowLinkValueTest {
             if (!visited[neighbour]) {
                 populateLowLinkValues(neighbour, visited, lowLink, stk, onStack, graph);
             }
-            if(onStack[neighbour]) {
+            if (onStack[neighbour]) {
                 lowLink[node] = Math.min(lowLink[neighbour], lowLink[node]);
             }
         }
-        if(lowLink[node] == node) {
-            while(true) {
+        if (lowLink[node] == node) {
+            while (true) {
                 int top = stk.pop();
                 onStack[top] = false;
-                if(top == node) {
+                if (top == node) {
                     break;
                 }
             }

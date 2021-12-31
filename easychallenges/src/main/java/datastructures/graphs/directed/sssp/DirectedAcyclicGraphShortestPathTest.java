@@ -35,7 +35,7 @@ public class DirectedAcyclicGraphShortestPathTest {
         Map<String, Integer> distance = findShortestDistance("A", sortedNodes, graph, prev);
         distance.forEach((key, value) -> System.out.println("Distance from A to " + key + " is: " + value));
         System.out.println("================== PATH ==================");
-        printPath("A","H",prev);
+        printPath("A", "H", prev);
     }
 
     private static void printPath(String start, String end, Map<String, String> prev) {
@@ -44,11 +44,11 @@ public class DirectedAcyclicGraphShortestPathTest {
         String node = end;
         path.push(node);
         do {
-             node = prev.get(node);
-             path.push(node);
-        }while(!flag.equalsIgnoreCase(node));
+            node = prev.get(node);
+            path.push(node);
+        } while (!flag.equalsIgnoreCase(node));
         System.out.print("{");
-        while(!path.isEmpty()) {
+        while (!path.isEmpty()) {
             System.out.print(path.pop() + " ");
         }
         System.out.print("}");

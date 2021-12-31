@@ -33,7 +33,7 @@ public class BridgeTest {
         List<String> bridges = new ArrayList<>();
 
         for (int from : graph.getNodes()) {
-            if(!visited[from]) {
+            if (!visited[from]) {
                 dfs(from, -1, visited, lowLink, bridges, graph);
             }
         }
@@ -47,10 +47,10 @@ public class BridgeTest {
 
         for (int to : graph.getNeighboursOf(from)) {
             if (to == parent) continue;
-            if(!visited[to]) {
+            if (!visited[to]) {
                 dfs(to, from, visited, lowLink, bridges, graph);
                 lowLink[from] = Math.min(lowLink[from], lowLink[to]);
-                if(from < lowLink[to]) {
+                if (from < lowLink[to]) {
                     bridges.add(from + "--" + to);
                 }
             } else {

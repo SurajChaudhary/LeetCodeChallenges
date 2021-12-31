@@ -39,10 +39,10 @@ public class DijkstraDupTest {
         Stack<Integer> path = new Stack<>();
         path.push(end);
         Integer node = end;
-        while(node != null) {
+        while (node != null) {
             node = prev[node];
-            if(node != null)
-            path.push(node);
+            if (node != null)
+                path.push(node);
         }
         Collections.reverse(path);
         System.out.println(path);
@@ -54,7 +54,7 @@ public class DijkstraDupTest {
 
         priorityQueue.offer(new Node(start, 0));
 
-        while(!priorityQueue.isEmpty()) {
+        while (!priorityQueue.isEmpty()) {
             Node preferredNode = priorityQueue.poll();
             visited[preferredNode.getValue()] = true;
             for (Edge edge : graph.getOutwardEdgesOf(preferredNode.getValue())) {
@@ -62,7 +62,7 @@ public class DijkstraDupTest {
                     continue;
                 }
                 double newDistance = distance[preferredNode.getValue()] + edge.getCost();
-                if(newDistance < distance[edge.getTo()]) {
+                if (newDistance < distance[edge.getTo()]) {
                     distance[edge.getTo()] = newDistance;
                     priorityQueue.offer(new Node(edge.getTo(), newDistance));
                     prev[edge.getTo()] = preferredNode.getValue();

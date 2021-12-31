@@ -14,7 +14,7 @@ public class PathBetweenTwoVerticesTest {
         int source = 1;
         int dest = 3;
 
-        boolean pathPresent = isPathBetweenVerticesPresent(graph,source,dest, 4);
+        boolean pathPresent = isPathBetweenVerticesPresent(graph, source, dest, 4);
         System.out.println("There is " + (pathPresent ? "a path between vertices!" : "no path between vertices!"));
     }
 
@@ -25,17 +25,17 @@ public class PathBetweenTwoVerticesTest {
 
     private static boolean pathUtil(int node, int dest, boolean[] visited, AdjacencyListBasedGraph graph) {
         visited[node] = true;
-        if(node == dest) {
+        if (node == dest) {
             return true;
         }
 
-        for(int a : graph.getNeighboursOf(node)) {
-            if(!visited[a]) {
-                if(pathUtil(a, dest, visited, graph)) {
+        for (int a : graph.getNeighboursOf(node)) {
+            if (!visited[a]) {
+                if (pathUtil(a, dest, visited, graph)) {
                     return true;
                 }
             }
         }
-        return  false;
+        return false;
     }
 }

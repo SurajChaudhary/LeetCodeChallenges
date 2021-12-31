@@ -19,9 +19,9 @@ public class DepthFirstSearchTest {
 
     private static void depthFirstTraversal(AdjacencyListBasedGraph graph) {
         int vertices = graph.getVertices();
-        boolean [] visited = new boolean[vertices];
-        for(int vertex : graph.getNodes()) {
-            if(!visited[vertex]) {
+        boolean[] visited = new boolean[vertices];
+        for (int vertex : graph.getNodes()) {
+            if (!visited[vertex]) {
                 dfs(vertex, graph, visited);
             }
             System.out.println(" ");
@@ -32,8 +32,8 @@ public class DepthFirstSearchTest {
         System.out.print(vertex + " ");
         visited[vertex] = true;
 
-        for(int neighbour : graph.getNeighboursOf(vertex)) {
-            if(!visited[neighbour]) {
+        for (int neighbour : graph.getNeighboursOf(vertex)) {
+            if (!visited[neighbour]) {
                 dfs(neighbour, graph, visited);
             }
         }

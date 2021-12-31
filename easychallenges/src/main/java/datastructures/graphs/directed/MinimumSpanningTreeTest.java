@@ -51,39 +51,31 @@ public class MinimumSpanningTreeTest {
     public static void main(String[] args) {
         int n = 8;
         List<List<Edge>> g = createEmptyGraph(n);
-
         addDirectedEdge(g, 0, 1, 10);
         addDirectedEdge(g, 0, 2, 1);
         addDirectedEdge(g, 0, 3, 4);
-
         addDirectedEdge(g, 2, 1, 3);
         addDirectedEdge(g, 2, 5, 8);
         addDirectedEdge(g, 2, 3, 2);
         addDirectedEdge(g, 2, 0, 1);
-
         addDirectedEdge(g, 3, 2, 2);
         addDirectedEdge(g, 3, 5, 2);
         addDirectedEdge(g, 3, 6, 7);
         addDirectedEdge(g, 3, 0, 4);
-
         addDirectedEdge(g, 5, 2, 8);
         addDirectedEdge(g, 5, 4, 1);
         addDirectedEdge(g, 5, 7, 9);
         addDirectedEdge(g, 5, 6, 6);
         addDirectedEdge(g, 5, 3, 2);
-
         addDirectedEdge(g, 4, 1, 0);
         addDirectedEdge(g, 4, 5, 1);
         addDirectedEdge(g, 4, 7, 8);
-
         addDirectedEdge(g, 1, 0, 10);
         addDirectedEdge(g, 1, 2, 3);
         addDirectedEdge(g, 1, 4, 0);
-
         addDirectedEdge(g, 6, 3, 7);
         addDirectedEdge(g, 6, 5, 6);
         addDirectedEdge(g, 6, 7, 12);
-
         addDirectedEdge(g, 7, 4, 8);
         addDirectedEdge(g, 7, 5, 9);
         addDirectedEdge(g, 7, 6, 12);
@@ -112,7 +104,7 @@ public class MinimumSpanningTreeTest {
     }
 
     private void solve(int n) {
-        int maxEdge = n-1;
+        int maxEdge = n - 1;
         int edgeCount = 0;
         pq = new PriorityQueue<>();
         visited = new boolean[n];

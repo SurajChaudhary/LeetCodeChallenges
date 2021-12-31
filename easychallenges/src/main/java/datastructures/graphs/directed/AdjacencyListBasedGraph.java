@@ -15,7 +15,7 @@ public class AdjacencyListBasedGraph {
         this.graph = new LinkedHashMap<>(this.vertices);
         this.isZeroBased = isZeroBased;
 
-        if(isZeroBased) {
+        if (isZeroBased) {
             for (int i = 0; i < this.vertices; i++) {
                 this.graph.put(i, new ArrayList<>());
             }
@@ -39,11 +39,11 @@ public class AdjacencyListBasedGraph {
     }
 
     void addEdge(int source, int destination) {
-        if(isZeroBased) {
+        if (isZeroBased) {
             if (source < 0 || destination < 0 || source >= this.vertices || destination >= this.vertices) {
                 throw new IllegalArgumentException("Not a valid number of argument!!!");
             }
-        }else {
+        } else {
             if (source < 1 || destination < 1 || source > this.vertices || destination > this.vertices) {
                 throw new IllegalArgumentException("Not a valid number of argument!!!");
             }

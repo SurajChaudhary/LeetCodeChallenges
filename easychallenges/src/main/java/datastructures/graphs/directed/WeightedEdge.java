@@ -1,10 +1,9 @@
-package datastructures.graphs.directed.sssp;
+package datastructures.graphs.directed;
 
-public class Edge {
-    private int from, to;
-    private double cost;
+public class WeightedEdge {
+    private int from, to, cost;
 
-    public Edge(int from, int to, double cost) {
+    public WeightedEdge(int from, int to, int cost) {
         this.from = from;
         this.to = to;
         this.cost = cost;
@@ -18,7 +17,7 @@ public class Edge {
         return to;
     }
 
-    public double getCost() {
+    public int getCost() {
         return cost;
     }
 

@@ -1,7 +1,7 @@
 package datastructures.graphs.directed.sssp;
 
 public class StringEdge {
-    private String from , to;
+    private String from, to;
     private double cost;
 
     public StringEdge(String from, String to, double cost) {

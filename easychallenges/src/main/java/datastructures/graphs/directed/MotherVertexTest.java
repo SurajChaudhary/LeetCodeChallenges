@@ -17,7 +17,7 @@ public class MotherVertexTest {
         graph.print();
 
         System.out.println("================== SCCs ==============");
-        int motherVertex  = getMotherVertex(graph);
+        int motherVertex = getMotherVertex(graph);
         System.out.println("Mother vertex is: " + motherVertex);
 
     }
@@ -27,17 +27,17 @@ public class MotherVertexTest {
         boolean[] visited = new boolean[nodes];
         Arrays.fill(visited, false);
         int lastVisitedNode = -1;
-        for(int node : graph.getNodes()) {
+        for (int node : graph.getNodes()) {
             if (!visited[node]) {
-                performDfs(node,graph,visited);
+                performDfs(node, graph, visited);
                 lastVisitedNode = node;
             }
         }
 
         Arrays.fill(visited, false);
-        performDfs(lastVisitedNode,graph,visited);
-        for(boolean ele : visited) {
-            if(!ele) {
+        performDfs(lastVisitedNode, graph, visited);
+        for (boolean ele : visited) {
+            if (!ele) {
                 System.out.println("No mother vertex exists!");
                 return -1;
             }
@@ -49,7 +49,7 @@ public class MotherVertexTest {
         visited[node] = true;
         for (int at : graph.getNeighboursOf(node)) {
             if (!visited[at]) {
-                performDfs(at,graph,visited);
+                performDfs(at, graph, visited);
             }
         }
     }

@@ -28,11 +28,11 @@ public class KosarajuAlgorithmTest {
     private static void printSCC(AdjacencyListBasedGraph graph) {
         int sccCount = 0;
         Stack<Integer> stk = new Stack<>();
-        boolean [] visited = new boolean[graph.getVertices()];
+        boolean[] visited = new boolean[graph.getVertices()];
 
         //Step:1 - Populated Stack by performing DFS in topological order
-        for(int node : graph.getNodes()) {
-            if(!visited[node]) {
+        for (int node : graph.getNodes()) {
+            if (!visited[node]) {
                 populateStack(node, visited, stk, graph);
             }
         }
@@ -43,9 +43,9 @@ public class KosarajuAlgorithmTest {
         Arrays.fill(visited, false);
 
         //Step:3 - Process all vertices in order defined in stack
-        while(!stk.isEmpty()) {
+        while (!stk.isEmpty()) {
             int topNode = stk.pop();
-            if(!visited[topNode]) {
+            if (!visited[topNode]) {
                 ++sccCount;
                 System.out.print("{ ");
                 dfsToPrint(topNode, visited, transposedGraph);
@@ -60,8 +60,8 @@ public class KosarajuAlgorithmTest {
     private static void dfsToPrint(int node, boolean[] visited, AdjacencyListBasedGraph graph) {
         visited[node] = true;
         System.out.print(node + " ");
-        for(int neighbour : graph.getNeighboursOf(node)) {
-            if(!visited[neighbour]) {
+        for (int neighbour : graph.getNeighboursOf(node)) {
+            if (!visited[neighbour]) {
                 dfsToPrint(neighbour, visited, graph);
             }
         }
@@ -70,8 +70,8 @@ public class KosarajuAlgorithmTest {
     private static void populateStack(int node, boolean[] visited, Stack<Integer> stk, AdjacencyListBasedGraph graph) {
         visited[node] = true;
 
-        for(int neighbour : graph.getNeighboursOf(node)) {
-            if(!visited[neighbour]) {
+        for (int neighbour : graph.getNeighboursOf(node)) {
+            if (!visited[neighbour]) {
                 populateStack(neighbour, visited, stk, graph);
             }
         }

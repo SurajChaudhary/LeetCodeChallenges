@@ -25,6 +25,7 @@ public class StringWeightedGraph {
     public List<StringEdge> getOutwardEdgesOf(String from) {
         return this.graph.getOrDefault(from, new ArrayList<>());
     }
+
     public Set<String> getNodes() {
         return this.graph.keySet();
     }

@@ -39,7 +39,7 @@ public class ArticulationPointTest {
         List<String> bridges = new ArrayList<>();
 
         for (int from : graph.getNodes()) {
-            if(!visited[from]) {
+            if (!visited[from]) {
                 outEdgeCount = 0;
                 dfs(from, from, -1, visited, lowLink, bridges, articulationPoint, graph);
                 articulationPoint[from] = (outEdgeCount > 1);
@@ -51,20 +51,20 @@ public class ArticulationPointTest {
     }
 
     private static void dfs(int root, int from, int parent, boolean[] visited, int[] lowLink, List<String> bridges, boolean[] articulationPoint, AdjacencyListBasedGraph graph) {
-        if(root == parent) outEdgeCount++;
+        if (root == parent) outEdgeCount++;
 
         visited[from] = true;
         lowLink[from] = from;
 
         for (int to : graph.getNeighboursOf(from)) {
             if (to == parent) continue;
-            if(!visited[to]) {
+            if (!visited[to]) {
                 dfs(root, to, from, visited, lowLink, bridges, articulationPoint, graph);
                 lowLink[from] = Math.min(lowLink[from], lowLink[to]);
-                if(from < lowLink[to]) {
+                if (from < lowLink[to]) {
                     bridges.add(from + "--" + to);
                 }
-                if(from <= lowLink[to]) {
+                if (from <= lowLink[to]) {
                     articulationPoint[from] = true;
                 }
             } else {
