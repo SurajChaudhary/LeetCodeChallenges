@@ -4,7 +4,7 @@ import java.util.*;
 
 public class OrderOfCharactersInSortedAlienDictionaryTest {
     public static void main(String[] args) {
-        String[] words = { "caa", "aaa", "aab" };
+        String[] words = {"caa", "aaa", "aab"};
         printOrder(words, 3, 3);
         String[] words1 = {"baa", "abcd", "abca", "cab", "cad"};
         printOrder(words1, 5, 4);
@@ -13,13 +13,13 @@ public class OrderOfCharactersInSortedAlienDictionaryTest {
     private static void printOrder(String[] words, int numberOfWords, int wordLength) {
         DirectedGraph graph = new DirectedGraph(wordLength);
 
-        for (int i = 0; i < numberOfWords-1; i++) {
+        for (int i = 0; i < numberOfWords - 1; i++) {
             String word1 = words[i];
-            String word2 = words[i+1];
+            String word2 = words[i + 1];
 
-            for(int j = 0; j < Math.min(word1.length(), word2.length()); j++) {
+            for (int j = 0; j < Math.min(word1.length(), word2.length()); j++) {
 
-                if(word1.charAt(j) != word2.charAt(j)) {
+                if (word1.charAt(j) != word2.charAt(j)) {
                     graph.addEdge(word1.charAt(j), word2.charAt(j));
                     break;
                 }
@@ -32,18 +32,18 @@ public class OrderOfCharactersInSortedAlienDictionaryTest {
         int[] degree = graph.inDegreeOfNodes();
         Queue<Character> q = new LinkedList<>();
 
-        for(char c : graph.nodes()) {
-            if(degree[c-'a'] == 0) {
+        for (char c : graph.nodes()) {
+            if (degree[c - 'a'] == 0) {
                 q.add(c);
             }
         }
         List<Character> list = new ArrayList<>();
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             Character cc = q.poll();
             list.add(cc);
             for (char to : graph.getNeighborsOf(cc)) {
-                degree[to-'a']--;
-                if(degree[to-'a'] == 0) {
+                degree[to - 'a']--;
+                if (degree[to - 'a'] == 0) {
                     q.add(to);
                 }
             }
@@ -87,7 +87,7 @@ public class OrderOfCharactersInSortedAlienDictionaryTest {
             Arrays.fill(inDegrees, 0);
             for (char node : this.nodes()) {
                 for (char to : this.getNeighborsOf(node)) {
-                    inDegrees[to-'a']++;
+                    inDegrees[to - 'a']++;
                 }
             }
             return inDegrees;

@@ -9,6 +9,7 @@ import java.util.List;
 
 public class TopologicalSortUsingDepartureTimeTest {
     static int TIME = 0;
+
     public static void main(String[] args) {
         DirectedGraph graph = new DirectedGraph(6);
         graph.addEdge(5, 0);

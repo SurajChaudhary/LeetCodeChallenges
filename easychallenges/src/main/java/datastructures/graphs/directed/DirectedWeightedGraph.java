@@ -19,6 +19,14 @@ public class DirectedWeightedGraph {
         return this.adjList.keySet();
     }
 
+    public List<WeightedEdge> edges() {
+        List<WeightedEdge> edges = new ArrayList<>();
+        for (List<WeightedEdge> list : this.adjList.values()) {
+            edges.addAll(list);
+        }
+        return edges;
+    }
+
     public void addEdge(int from, int to, int cost) {
         WeightedEdge edge = new WeightedEdge(from, to, cost);
         if (this.adjList.containsKey(from)) {

@@ -17,6 +17,7 @@ public class LongestPathBetweenAnyTwoCitiesInDAGTest {
 
         System.out.println("Longest path is: " + getLongestPath(graph));
     }
+
     private static String getLongestPath(DirectedWeightedGraph graph) {
         // Get topological order
         int[] topo = getTopologicalOrder(graph);
