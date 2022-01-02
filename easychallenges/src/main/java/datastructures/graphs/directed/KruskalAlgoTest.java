@@ -1,7 +1,6 @@
-package datastructures.graphs;
+package datastructures.graphs.directed;
 
-import datastructures.graphs.directed.DirectedWeightedGraph;
-import datastructures.graphs.directed.WeightedEdge;
+import datastructures.graphs.WeightedEdge;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package datastructures.graphs.directed;
+package datastructures.graphs;
 
 public class WeightedEdge {
     private int from, to, cost;

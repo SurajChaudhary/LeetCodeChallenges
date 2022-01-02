@@ -1,7 +1,7 @@
 package datastructures.graphs.directed.dag;
 
+import datastructures.graphs.WeightedEdge;
 import datastructures.graphs.directed.DirectedWeightedGraph;
-import datastructures.graphs.directed.WeightedEdge;
 
 import java.util.*;
 

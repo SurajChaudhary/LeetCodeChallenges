@@ -1,14 +1,12 @@
-package datastructures.graphs.directed;
-
-import datastructures.graphs.WeightedEdge;
+package datastructures.graphs;
 
 import java.util.*;
 
-public class DirectedWeightedGraph {
+public class WeightedUndirectedGraph {
     int V;
     Map<Integer, List<WeightedEdge>> adjList;
 
-    public DirectedWeightedGraph(int V) {
+    public WeightedUndirectedGraph(int V) {
         this.V = V;
         this.adjList = new HashMap<>();
     }
@@ -30,12 +28,12 @@ public class DirectedWeightedGraph {
     }
 
     public void addEdge(int from, int to, int cost) {
-        WeightedEdge edge = new WeightedEdge(from, to, cost);
+        WeightedEdge fromEdge = new WeightedEdge(from, to, cost);
         if (this.adjList.containsKey(from)) {
-            this.adjList.get(from).add(edge);
+            this.adjList.get(from).add(fromEdge);
         } else {
             List<WeightedEdge> neighbors = new ArrayList<>();
-            neighbors.add(edge);
+            neighbors.add(fromEdge);
             this.adjList.put(from, neighbors);
         }
         this.adjList.putIfAbsent(to, new ArrayList<>());

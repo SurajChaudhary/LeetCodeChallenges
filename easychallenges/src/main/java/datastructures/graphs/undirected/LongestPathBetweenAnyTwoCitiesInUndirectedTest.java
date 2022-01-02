@@ -1,7 +1,7 @@
 package datastructures.graphs.undirected;
 
+import datastructures.graphs.WeightedEdge;
 import datastructures.graphs.directed.DirectedWeightedGraph;
-import datastructures.graphs.directed.WeightedEdge;
 
 public class LongestPathBetweenAnyTwoCitiesInUndirectedTest {
     public static void main(String[] args) {
