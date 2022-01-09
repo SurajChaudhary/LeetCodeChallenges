@@ -17,9 +17,11 @@ public class PathOfLengthKTest {
         public int getFrom() {
             return from;
         }
+
         public int getTo() {
             return to;
         }
+
         public int getCost() {
             return cost;
         }
@@ -34,7 +36,7 @@ public class PathOfLengthKTest {
         }
     }
 
-     static class Graph {
+    static class Graph {
         int V;
         Map<Integer, List<Edge>> adjList;
 
@@ -105,8 +107,6 @@ public class PathOfLengthKTest {
     }
 
 
-
-
     public static void main(String[] args) {
         int V = 9;
         Graph g = new Graph(9);
@@ -131,22 +131,22 @@ public class PathOfLengthKTest {
         int src = 0;
         int k = 62;
 
-        if(pathWithCostLeastKExists(src, k, g, V))
+        if (pathWithCostLeastKExists(src, k, g, V))
             System.out.println("YES");
         else
             System.out.println("NO");
 
         k = 60;
-        if(pathWithCostLeastKExists(src, k, g, V))
+        if (pathWithCostLeastKExists(src, k, g, V))
             System.out.println("YES");
         else
             System.out.println("NO");
 
     }
 
-    private static boolean pathWithCostLeastKExists(int src, int k, Graph g , int V) {
+    private static boolean pathWithCostLeastKExists(int src, int k, Graph g, int V) {
         boolean[] visited = new boolean[V];
-        if(dfsUtil(src, k, g, visited)) {
+        if (dfsUtil(src, k, g, visited)) {
             return true;
         }
         return false;
@@ -155,19 +155,19 @@ public class PathOfLengthKTest {
 
     private static boolean dfsUtil(int src, int k, Graph g, boolean[] visited) {
         visited[src] = true;
-        if(k == 0) {
+        if (k == 0) {
             return true;
         }
-        for(Edge edge : g.getNeighborsOf(src)){
-            if(!visited[edge.getTo()]) {
-                if(dfsUtil(edge.getTo(), k- edge.getCost(), g, visited)) {
+        for (Edge edge : g.getNeighborsOf(src)) {
+            if (!visited[edge.getTo()]) {
+                if (dfsUtil(edge.getTo(), k - edge.getCost(), g, visited)) {
                     return true;
                 }
             }
 
         }
         visited[src] = false;
-        return  false;
+        return false;
     }
 
 

@@ -1,9 +1,11 @@
 package datastructures.graphs.directed;
 
 
+import datastructures.graphs.AdjacencyListBasedDirectedGraph;
+
 public class CycleDetectionTest {
     public static void main(String[] args) {
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(9, false);
+        AdjacencyListBasedDirectedGraph graph = new AdjacencyListBasedDirectedGraph(9, false);
         graph.addEdge(1, 2);
         graph.addEdge(2, 3);
         graph.addEdge(3, 4);
@@ -22,7 +24,7 @@ public class CycleDetectionTest {
         System.out.println("The graph is " + (isCyclic ? "cyclic!" : "not cyclic!"));
     }
 
-    private static boolean isCyclic(AdjacencyListBasedGraph graph, int V) {
+    private static boolean isCyclic(AdjacencyListBasedDirectedGraph graph, int V) {
         boolean[] visited = new boolean[V + 1];
         boolean[] dfsVisited = new boolean[V + 1];
 
@@ -36,7 +38,7 @@ public class CycleDetectionTest {
         return false;
     }
 
-    private static boolean cyclicUtil(int node, boolean[] visited, boolean[] dfsVisited, AdjacencyListBasedGraph graph) {
+    private static boolean cyclicUtil(int node, boolean[] visited, boolean[] dfsVisited, AdjacencyListBasedDirectedGraph graph) {
 
         visited[node] = true;
         dfsVisited[node] = true;

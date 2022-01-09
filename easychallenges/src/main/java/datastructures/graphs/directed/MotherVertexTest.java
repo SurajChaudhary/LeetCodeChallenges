@@ -1,10 +1,12 @@
 package datastructures.graphs.directed;
 
+import datastructures.graphs.AdjacencyListBasedDirectedGraph;
+
 import java.util.Arrays;
 
 public class MotherVertexTest {
     public static void main(String[] args) {
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(7, true);
+        AdjacencyListBasedDirectedGraph graph = new AdjacencyListBasedDirectedGraph(7, true);
         graph.addEdge(5, 6);
         graph.addEdge(5, 2);
         graph.addEdge(6, 0);
@@ -22,7 +24,7 @@ public class MotherVertexTest {
 
     }
 
-    private static int getMotherVertex(AdjacencyListBasedGraph graph) {
+    private static int getMotherVertex(AdjacencyListBasedDirectedGraph graph) {
         int nodes = graph.getVertices();
         boolean[] visited = new boolean[nodes];
         Arrays.fill(visited, false);
@@ -45,7 +47,7 @@ public class MotherVertexTest {
         return lastVisitedNode;
     }
 
-    private static void performDfs(int node, AdjacencyListBasedGraph graph, boolean[] visited) {
+    private static void performDfs(int node, AdjacencyListBasedDirectedGraph graph, boolean[] visited) {
         visited[node] = true;
         for (int at : graph.getNeighboursOf(node)) {
             if (!visited[at]) {

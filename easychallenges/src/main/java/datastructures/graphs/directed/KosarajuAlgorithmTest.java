@@ -1,12 +1,14 @@
 package datastructures.graphs.directed;
 
+import datastructures.graphs.AdjacencyListBasedDirectedGraph;
+
 import java.util.Arrays;
 import java.util.Set;
 import java.util.Stack;
 
 public class KosarajuAlgorithmTest {
     public static void main(String[] args) {
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(9, true);
+        AdjacencyListBasedDirectedGraph graph = new AdjacencyListBasedDirectedGraph(9, true);
         graph.addEdge(3, 0);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
@@ -25,7 +27,7 @@ public class KosarajuAlgorithmTest {
 
     }
 
-    private static void printSCC(AdjacencyListBasedGraph graph) {
+    private static void printSCC(AdjacencyListBasedDirectedGraph graph) {
         int sccCount = 0;
         Stack<Integer> stk = new Stack<>();
         boolean[] visited = new boolean[graph.getVertices()];
@@ -38,7 +40,7 @@ public class KosarajuAlgorithmTest {
         }
 
         //Step:2 - Transpose the graph
-        AdjacencyListBasedGraph transposedGraph = transpose(graph);
+        AdjacencyListBasedDirectedGraph transposedGraph = transpose(graph);
 
         Arrays.fill(visited, false);
 
@@ -57,7 +59,7 @@ public class KosarajuAlgorithmTest {
         System.out.println("Total SCCs found are : " + sccCount);
     }
 
-    private static void dfsToPrint(int node, boolean[] visited, AdjacencyListBasedGraph graph) {
+    private static void dfsToPrint(int node, boolean[] visited, AdjacencyListBasedDirectedGraph graph) {
         visited[node] = true;
         System.out.print(node + " ");
         for (int neighbour : graph.getNeighboursOf(node)) {
@@ -67,7 +69,7 @@ public class KosarajuAlgorithmTest {
         }
     }
 
-    private static void populateStack(int node, boolean[] visited, Stack<Integer> stk, AdjacencyListBasedGraph graph) {
+    private static void populateStack(int node, boolean[] visited, Stack<Integer> stk, AdjacencyListBasedDirectedGraph graph) {
         visited[node] = true;
 
         for (int neighbour : graph.getNeighboursOf(node)) {
@@ -78,8 +80,8 @@ public class KosarajuAlgorithmTest {
         stk.push(node);
     }
 
-    private static AdjacencyListBasedGraph transpose(AdjacencyListBasedGraph graph) {
-        AdjacencyListBasedGraph transposedGraph = new AdjacencyListBasedGraph(graph.getVertices(), true);
+    private static AdjacencyListBasedDirectedGraph transpose(AdjacencyListBasedDirectedGraph graph) {
+        AdjacencyListBasedDirectedGraph transposedGraph = new AdjacencyListBasedDirectedGraph(graph.getVertices(), true);
         Set<Integer> nodes = graph.getNodes();
         for (int node : nodes) {
             for (int neighbour : graph.getNeighboursOf(node)) {

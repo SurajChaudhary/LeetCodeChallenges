@@ -1,12 +1,14 @@
 package datastructures.graphs.undirected;
 
+import datastructures.graphs.AdjacencyListBasedUndirectedGraph;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BreadthFirstSearchTest {
     public static void main(String[] args) {
         int V = 5;
-        AdjacencyListBasedGraph listBasedGraph = new AdjacencyListBasedGraph(V);
+        AdjacencyListBasedUndirectedGraph listBasedGraph = new AdjacencyListBasedUndirectedGraph(V);
 
         listBasedGraph.addEdge(1, 0);
         listBasedGraph.addEdge(0, 2);
@@ -19,7 +21,7 @@ public class BreadthFirstSearchTest {
         breadthFirstTraversal(listBasedGraph, V);
     }
 
-    private static void breadthFirstTraversal(AdjacencyListBasedGraph graph, int V) {
+    private static void breadthFirstTraversal(AdjacencyListBasedUndirectedGraph graph, int V) {
         boolean[] visited = new boolean[V];
         Queue<Integer> q = new LinkedList<>();
         System.out.print("{ ");
@@ -32,7 +34,7 @@ public class BreadthFirstSearchTest {
 
     }
 
-    private static void bfsUtil(int node, boolean[] visited, Queue<Integer> q, AdjacencyListBasedGraph graph) {
+    private static void bfsUtil(int node, boolean[] visited, Queue<Integer> q, AdjacencyListBasedUndirectedGraph graph) {
         visited[node] = true;
         q.add(node);
 

@@ -1,5 +1,7 @@
 package datastructures.graphs.undirected;
 
+import datastructures.graphs.AdjacencyListBasedUndirectedGraph;
+
 import java.util.Arrays;
 
 public class CycleDetectionByColorsTest {
@@ -9,7 +11,7 @@ public class CycleDetectionByColorsTest {
 
     public static void main(String[] args) {
         int nodes = 4;
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(nodes);
+        AdjacencyListBasedUndirectedGraph graph = new AdjacencyListBasedUndirectedGraph(nodes);
         graph.addEdge(1, 2);
         graph.addEdge(1, 0);
         graph.addEdge(0, 2);
@@ -21,7 +23,7 @@ public class CycleDetectionByColorsTest {
         System.out.println("The graph is " + (isCyclic ? "cyclic!" : "not cyclic!"));
     }
 
-    private static boolean isCyclic(AdjacencyListBasedGraph graph, int nodes) {
+    private static boolean isCyclic(AdjacencyListBasedUndirectedGraph graph, int nodes) {
         int[] colors = new int[nodes];
         Arrays.fill(colors, BLUE);
         for (int node : graph.getNodes()) {
@@ -36,7 +38,7 @@ public class CycleDetectionByColorsTest {
         return false;
     }
 
-    private static boolean isCyclicUtil(int node, int[] colors, AdjacencyListBasedGraph graph) {
+    private static boolean isCyclicUtil(int node, int[] colors, AdjacencyListBasedUndirectedGraph graph) {
         if (colors[node] == RED) {
             return true;
         }

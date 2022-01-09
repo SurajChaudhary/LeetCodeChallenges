@@ -1,12 +1,14 @@
 package datastructures.graphs.directed;
 
 
+import datastructures.graphs.AdjacencyListBasedDirectedGraph;
+
 import java.util.Stack;
 
 public class TopologicalSortTest {
     public static void main(String[] args) {
         int vertices = 5;
-        AdjacencyListBasedGraph listBasedGraph = new AdjacencyListBasedGraph(vertices, true);
+        AdjacencyListBasedDirectedGraph listBasedGraph = new AdjacencyListBasedDirectedGraph(vertices, true);
 
         listBasedGraph.addEdge(1, 0);
         listBasedGraph.addEdge(0, 2);
@@ -19,7 +21,7 @@ public class TopologicalSortTest {
         topologicalSort(listBasedGraph, vertices);
     }
 
-    private static void topologicalSort(AdjacencyListBasedGraph g, int V) {
+    private static void topologicalSort(AdjacencyListBasedDirectedGraph g, int V) {
         Stack<Integer> stack = new Stack<>();
         boolean[] visited = new boolean[V];
 
@@ -36,7 +38,7 @@ public class TopologicalSortTest {
         System.out.println(" }");
     }
 
-    private static void sort(int node, boolean[] visited, Stack<Integer> stack, AdjacencyListBasedGraph g) {
+    private static void sort(int node, boolean[] visited, Stack<Integer> stack, AdjacencyListBasedDirectedGraph g) {
         visited[node] = true;
 
         for (int neighbour : g.getNeighboursOf(node)) {

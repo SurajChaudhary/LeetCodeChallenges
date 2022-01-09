@@ -11,9 +11,9 @@ public class KnightTourTest {
         for (int[] arr : visited) Arrays.fill(arr, 0);
 
         boolean canTour = tour(board, visited, size);
-        if(canTour) {
+        if (canTour) {
             printBoard(visited);
-        }else {
+        } else {
             System.out.println("Knight could not reach to all cells successfully!!!");
         }
     }
@@ -21,10 +21,10 @@ public class KnightTourTest {
     private static boolean tour(boolean[][] board, int[][] visited, int size) {
         int cellCount = 0;
         int[] rowVector = {-2, -2, -1, -1, 1, 1, 2, 2};
-        int[] colVector = {-1, 1, -2, 2, -2, 2, -1,1};
-        if(tourUtil(board, visited,-1,-1,size,cellCount,rowVector,colVector)) {
+        int[] colVector = {-1, 1, -2, 2, -2, 2, -1, 1};
+        if (tourUtil(board, visited, -1, -1, size, cellCount, rowVector, colVector)) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -38,18 +38,18 @@ public class KnightTourTest {
             int cellCount,
             int[] rowVector,
             int[] colVector) {
-        if(cellCount == (size*size)) {
+        if (cellCount == (size * size)) {
             return true;
-        }else {
-            for(int i = 0; i < rowVector.length; i++) {
+        } else {
+            for (int i = 0; i < rowVector.length; i++) {
                 int nextRow = currRow + rowVector[i];
                 int nextCol = currCol + colVector[i];
 
-                if(canKnightBePlacedOn(nextRow, nextCol, board)) {
+                if (canKnightBePlacedOn(nextRow, nextCol, board)) {
                     cellCount++;
                     board[nextRow][nextCol] = true;
                     visited[nextRow][nextCol] = cellCount;
-                    if(tourUtil(board, visited,nextRow,nextCol,size,cellCount,rowVector,colVector)) {
+                    if (tourUtil(board, visited, nextRow, nextCol, size, cellCount, rowVector, colVector)) {
                         return true;
                     }
                     cellCount--;
@@ -63,9 +63,9 @@ public class KnightTourTest {
     }
 
     private static boolean canKnightBePlacedOn(int row, int col, boolean[][] board) {
-        if((row >= 0 && row <= board.length-1)
-            && (col >= 0 && col <= board.length-1)
-            && !board[row][col]) {
+        if ((row >= 0 && row <= board.length - 1)
+                && (col >= 0 && col <= board.length - 1)
+                && !board[row][col]) {
             return true;
         }
         return false;
@@ -75,16 +75,16 @@ public class KnightTourTest {
         System.out.println("Knight tours the board as follows: ");
         boolean isFirst = true;
         int count = 1;
-        while(count <= 64) {
-            for(int row = 0; row < board.length; row++){
-                for(int col = 0; col < board[row].length; col++) {
-                    if(board[row][col] == count) {
+        while (count <= 64) {
+            for (int row = 0; row < board.length; row++) {
+                for (int col = 0; col < board[row].length; col++) {
+                    if (board[row][col] == count) {
                         count++;
-                        if(isFirst) {
+                        if (isFirst) {
                             isFirst = false;
-                            System.out.println("Knight started at: {" + row + "," + col +"}");
-                        }else {
-                            System.out.println("then he moves next to: {" + row + "," + col +"}");
+                            System.out.println("Knight started at: {" + row + "," + col + "}");
+                        } else {
+                            System.out.println("then he moves next to: {" + row + "," + col + "}");
                         }
                     }
                 }

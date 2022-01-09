@@ -1,5 +1,7 @@
 package datastructures.graphs.directed;
 
+import datastructures.graphs.AdjacencyListBasedDirectedGraph;
+
 import java.util.*;
 
 public class LowLinkValueTest {
@@ -12,7 +14,7 @@ public class LowLinkValueTest {
         System.out.println(components1);
     }
 
-    private static Map<Integer, List<Integer>> getComponents(AdjacencyListBasedGraph graph, int nodes) {
+    private static Map<Integer, List<Integer>> getComponents(AdjacencyListBasedDirectedGraph graph, int nodes) {
         Stack<Integer> stk = new Stack<>();
         boolean[] onStack = new boolean[nodes];
         Arrays.fill(onStack, false);
@@ -42,7 +44,7 @@ public class LowLinkValueTest {
         return components;
     }
 
-    private static List<String> getBridges(AdjacencyListBasedGraph graph, int[] lowLink) {
+    private static List<String> getBridges(AdjacencyListBasedDirectedGraph graph, int[] lowLink) {
         boolean[] visited = new boolean[graph.getVertices()];
         Arrays.fill(visited, false);
         List<String> bridges = new ArrayList<>();
@@ -54,7 +56,7 @@ public class LowLinkValueTest {
         return bridges;
     }
 
-    private static void bridges(int from, boolean[] visited, int[] lowLink, AdjacencyListBasedGraph graph, List<String> bridges) {
+    private static void bridges(int from, boolean[] visited, int[] lowLink, AdjacencyListBasedDirectedGraph graph, List<String> bridges) {
         visited[from] = true;
         for (int to : graph.getNeighboursOf(from)) {
             if (!visited[to]) {
@@ -66,8 +68,8 @@ public class LowLinkValueTest {
         }
     }
 
-    private static AdjacencyListBasedGraph getGraph1(int nodes) {
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(nodes, true);
+    private static AdjacencyListBasedDirectedGraph getGraph1(int nodes) {
+        AdjacencyListBasedDirectedGraph graph = new AdjacencyListBasedDirectedGraph(nodes, true);
         graph.addEdge(3, 4);
         graph.addEdge(3, 7);
         graph.addEdge(7, 3);
@@ -84,8 +86,8 @@ public class LowLinkValueTest {
         return graph;
     }
 
-    private static AdjacencyListBasedGraph getGraph2(int nodes) {
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(nodes, true);
+    private static AdjacencyListBasedDirectedGraph getGraph2(int nodes) {
+        AdjacencyListBasedDirectedGraph graph = new AdjacencyListBasedDirectedGraph(nodes, true);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
         graph.addEdge(2, 0);
@@ -99,7 +101,7 @@ public class LowLinkValueTest {
         return graph;
     }
 
-    private static void populateLowLinkValues(int node, boolean[] visited, int[] lowLink, Stack<Integer> stk, boolean[] onStack, AdjacencyListBasedGraph graph) {
+    private static void populateLowLinkValues(int node, boolean[] visited, int[] lowLink, Stack<Integer> stk, boolean[] onStack, AdjacencyListBasedDirectedGraph graph) {
         visited[node] = true;
         lowLink[node] = node;
         stk.push(node);

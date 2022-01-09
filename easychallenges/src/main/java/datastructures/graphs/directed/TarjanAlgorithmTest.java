@@ -1,11 +1,13 @@
 package datastructures.graphs.directed;
 
+import datastructures.graphs.AdjacencyListBasedDirectedGraph;
+
 import java.util.*;
 
 public class TarjanAlgorithmTest {
     private static int id = 0;
     private static int sccCount = 0;
-    private static AdjacencyListBasedGraph graph;
+    private static AdjacencyListBasedDirectedGraph graph;
     private static Stack<Integer> stk = new Stack<>();
     private static boolean[] onStack;
     private static int[] low;
@@ -16,7 +18,7 @@ public class TarjanAlgorithmTest {
     public static void main(String[] args) {
         nodes = 9;
         visited = new boolean[nodes];
-        graph = new AdjacencyListBasedGraph(nodes, true);
+        graph = new AdjacencyListBasedDirectedGraph(nodes, true);
         graph.addEdge(3, 0);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
@@ -35,7 +37,7 @@ public class TarjanAlgorithmTest {
 
     }
 
-    private static void printSCC(AdjacencyListBasedGraph graph) {
+    private static void printSCC(AdjacencyListBasedDirectedGraph graph) {
         ids = new int[nodes];
         Arrays.fill(ids, -1);
         low = new int[nodes];

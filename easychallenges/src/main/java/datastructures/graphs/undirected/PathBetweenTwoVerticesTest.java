@@ -1,9 +1,11 @@
 package datastructures.graphs.undirected;
 
 
+import datastructures.graphs.AdjacencyListBasedUndirectedGraph;
+
 public class PathBetweenTwoVerticesTest {
     public static void main(String[] args) {
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(4);
+        AdjacencyListBasedUndirectedGraph graph = new AdjacencyListBasedUndirectedGraph(4);
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 2);
@@ -18,12 +20,12 @@ public class PathBetweenTwoVerticesTest {
         System.out.println("There is " + (pathPresent ? "a path between vertices!" : "no path between vertices!"));
     }
 
-    private static boolean isPathBetweenVerticesPresent(AdjacencyListBasedGraph graph, int source, int dest, int V) {
+    private static boolean isPathBetweenVerticesPresent(AdjacencyListBasedUndirectedGraph graph, int source, int dest, int V) {
         boolean[] visited = new boolean[V];
         return pathUtil(source, dest, visited, graph);
     }
 
-    private static boolean pathUtil(int node, int dest, boolean[] visited, AdjacencyListBasedGraph graph) {
+    private static boolean pathUtil(int node, int dest, boolean[] visited, AdjacencyListBasedUndirectedGraph graph) {
         visited[node] = true;
         if (node == dest) {
             return true;

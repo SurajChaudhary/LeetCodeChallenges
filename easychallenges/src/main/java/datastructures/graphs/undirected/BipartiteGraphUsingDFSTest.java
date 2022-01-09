@@ -1,5 +1,7 @@
 package datastructures.graphs.undirected;
 
+import datastructures.graphs.AdjacencyListBasedUndirectedGraph;
+
 import java.util.Arrays;
 
 public class BipartiteGraphUsingDFSTest {
@@ -9,7 +11,7 @@ public class BipartiteGraphUsingDFSTest {
 
     public static void main(String[] args) {
         int V = 8;
-        AdjacencyListBasedGraph listBasedGraph = new AdjacencyListBasedGraph(V);
+        AdjacencyListBasedUndirectedGraph listBasedGraph = new AdjacencyListBasedUndirectedGraph(V);
 
         listBasedGraph.addEdge(0, 1);
         listBasedGraph.addEdge(1, 2);
@@ -26,7 +28,7 @@ public class BipartiteGraphUsingDFSTest {
         System.out.println("The graph " + (isBipartite ? "is a Bipartite graph!!!" : "is not a Bipartite graph!!!"));
     }
 
-    private static boolean isGraphBipartite(int start, AdjacencyListBasedGraph graph, int V) {
+    private static boolean isGraphBipartite(int start, AdjacencyListBasedUndirectedGraph graph, int V) {
 
         int[] colors = new int[V];
         Arrays.fill(colors, NO_COLOR);
@@ -41,7 +43,7 @@ public class BipartiteGraphUsingDFSTest {
         return false;
     }
 
-    private static boolean dfsUtil(int node, int[] colors, int color, AdjacencyListBasedGraph graph) {
+    private static boolean dfsUtil(int node, int[] colors, int color, AdjacencyListBasedUndirectedGraph graph) {
         colors[node] = color;
         for (int adj : graph.getNeighboursOf(node)) {
             if (colors[adj] == NO_COLOR) {

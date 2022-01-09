@@ -1,10 +1,12 @@
 package datastructures.graphs.undirected;
 
+import datastructures.graphs.AdjacencyListBasedUndirectedGraph;
+
 import java.util.*;
 
 public class NodesPerLevelInBFSTest {
     public static void main(String[] args) {
-        AdjacencyListBasedGraph graphOne = getFirstGraph();
+        AdjacencyListBasedUndirectedGraph graphOne = getFirstGraph();
         graphOne.print();
         System.out.println("=======================================================");
         boolean[] visited = new boolean[graphOne.getVertices()];
@@ -16,7 +18,7 @@ public class NodesPerLevelInBFSTest {
             }
         }
         System.out.println("=======================================================");
-        AdjacencyListBasedGraph secondGraph = getSecondGraph();
+        AdjacencyListBasedUndirectedGraph secondGraph = getSecondGraph();
         secondGraph.print();
         System.out.println("=======================================================");
         visited = new boolean[secondGraph.getVertices()];
@@ -37,7 +39,7 @@ public class NodesPerLevelInBFSTest {
         }
     }
 
-    private static void levelOrderPrint(int start, boolean[] visited, AdjacencyListBasedGraph graph, Map<Integer, List<Integer>> levels) {
+    private static void levelOrderPrint(int start, boolean[] visited, AdjacencyListBasedUndirectedGraph graph, Map<Integer, List<Integer>> levels) {
         Queue<Integer> queue = new LinkedList<>();
         int level = 0;
         queue.add(start);
@@ -79,7 +81,7 @@ public class NodesPerLevelInBFSTest {
 
     }
 
-    private static void levelOrderPrint1(int start, boolean[] visited, AdjacencyListBasedGraph graph) {
+    private static void levelOrderPrint1(int start, boolean[] visited, AdjacencyListBasedUndirectedGraph graph) {
         Queue<Integer> queue = new LinkedList<>();
         int[] levels = new int[graph.getVertices()];
         levels[start] = 0;
@@ -99,8 +101,8 @@ public class NodesPerLevelInBFSTest {
         System.out.println(Arrays.toString(levels));
     }
 
-    private static AdjacencyListBasedGraph getFirstGraph() {
-        AdjacencyListBasedGraph listBasedGraph = new AdjacencyListBasedGraph(5);
+    private static AdjacencyListBasedUndirectedGraph getFirstGraph() {
+        AdjacencyListBasedUndirectedGraph listBasedGraph = new AdjacencyListBasedUndirectedGraph(5);
 
         listBasedGraph.addEdge(1, 0);
         listBasedGraph.addEdge(0, 2);
@@ -110,8 +112,8 @@ public class NodesPerLevelInBFSTest {
         return listBasedGraph;
     }
 
-    private static AdjacencyListBasedGraph getSecondGraph() {
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(6);
+    private static AdjacencyListBasedUndirectedGraph getSecondGraph() {
+        AdjacencyListBasedUndirectedGraph graph = new AdjacencyListBasedUndirectedGraph(6);
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 3);

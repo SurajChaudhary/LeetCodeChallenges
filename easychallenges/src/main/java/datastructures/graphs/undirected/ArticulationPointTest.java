@@ -1,6 +1,8 @@
 package datastructures.graphs.undirected;
 
 
+import datastructures.graphs.AdjacencyListBasedUndirectedGraph;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,8 +11,8 @@ public class ArticulationPointTest {
 
     static int outEdgeCount = 0;
 
-    private static AdjacencyListBasedGraph getGraph(int nodes) {
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(nodes);
+    private static AdjacencyListBasedUndirectedGraph getGraph(int nodes) {
+        AdjacencyListBasedUndirectedGraph graph = new AdjacencyListBasedUndirectedGraph(nodes);
         graph.addEdge(0, 1);
         graph.addEdge(1, 2);
         graph.addEdge(2, 0);
@@ -26,7 +28,7 @@ public class ArticulationPointTest {
 
     public static void main(String[] args) {
         int nodes = 9;
-        AdjacencyListBasedGraph graph = getGraph(nodes);
+        AdjacencyListBasedUndirectedGraph graph = getGraph(nodes);
 
         boolean[] visited = new boolean[nodes];
         Arrays.fill(visited, false);
@@ -50,7 +52,7 @@ public class ArticulationPointTest {
         System.out.println(Arrays.toString(articulationPoint));
     }
 
-    private static void dfs(int root, int from, int parent, boolean[] visited, int[] lowLink, List<String> bridges, boolean[] articulationPoint, AdjacencyListBasedGraph graph) {
+    private static void dfs(int root, int from, int parent, boolean[] visited, int[] lowLink, List<String> bridges, boolean[] articulationPoint, AdjacencyListBasedUndirectedGraph graph) {
         if (root == parent) outEdgeCount++;
 
         visited[from] = true;

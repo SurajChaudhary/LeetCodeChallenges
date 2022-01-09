@@ -1,5 +1,7 @@
 package datastructures.graphs.directed;
 
+import datastructures.graphs.AdjacencyListBasedDirectedGraph;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,7 +11,7 @@ public class AllPathCountTest {
     static int index = 0;
 
     public static void main(String[] args) {
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(5, false);
+        AdjacencyListBasedDirectedGraph graph = new AdjacencyListBasedDirectedGraph(5, false);
         graph.addEdge(1, 2);
         graph.addEdge(1, 3);
         graph.addEdge(1, 5);
@@ -25,7 +27,7 @@ public class AllPathCountTest {
         System.out.println("Total number of paths are: " + paths);
     }
 
-    private static int getPaths(AdjacencyListBasedGraph graph, int nodes, int source, int dest) {
+    private static int getPaths(AdjacencyListBasedDirectedGraph graph, int nodes, int source, int dest) {
         boolean[] visited = new boolean[nodes + 1];
         Arrays.fill(visited, false);
         List<Integer> path = new ArrayList<>();
@@ -33,7 +35,7 @@ public class AllPathCountTest {
         return count;
     }
 
-    private static void dfs(AdjacencyListBasedGraph graph, int source, int dest, boolean[] visited, List<Integer> path) {
+    private static void dfs(AdjacencyListBasedDirectedGraph graph, int source, int dest, boolean[] visited, List<Integer> path) {
         path.add(index, source);
         visited[source] = true;
         if (source == dest) {

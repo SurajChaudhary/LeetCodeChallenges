@@ -1,9 +1,11 @@
 package datastructures.graphs.undirected;
 
+import datastructures.graphs.AdjacencyListBasedUndirectedGraph;
+
 public class DepthFirstSearchTest {
     public static void main(String[] args) {
 
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(5);
+        AdjacencyListBasedUndirectedGraph graph = new AdjacencyListBasedUndirectedGraph(5);
 
         graph.addEdge(1, 0);
         graph.addEdge(0, 2);
@@ -17,7 +19,7 @@ public class DepthFirstSearchTest {
 
     }
 
-    private static void depthFirstTraversal(AdjacencyListBasedGraph graph) {
+    private static void depthFirstTraversal(AdjacencyListBasedUndirectedGraph graph) {
         int vertices = graph.getVertices();
         boolean[] visited = new boolean[vertices];
         for (int vertex : graph.getNodes()) {
@@ -28,7 +30,7 @@ public class DepthFirstSearchTest {
         }
     }
 
-    private static void dfs(int vertex, AdjacencyListBasedGraph graph, boolean[] visited) {
+    private static void dfs(int vertex, AdjacencyListBasedUndirectedGraph graph, boolean[] visited) {
         System.out.print(vertex + " ");
         visited[vertex] = true;
 

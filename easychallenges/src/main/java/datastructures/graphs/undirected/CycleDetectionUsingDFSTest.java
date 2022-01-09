@@ -1,8 +1,10 @@
 package datastructures.graphs.undirected;
 
-public class CycleDetectionTest {
+import datastructures.graphs.AdjacencyListBasedUndirectedGraph;
+
+public class CycleDetectionUsingDFSTest {
     public static void main(String[] args) {
-        AdjacencyListBasedGraph graph = new AdjacencyListBasedGraph(4);
+        AdjacencyListBasedUndirectedGraph graph = new AdjacencyListBasedUndirectedGraph(4);
         graph.addEdge(1, 2);
         graph.addEdge(1, 0);
         graph.addEdge(0, 2);
@@ -14,7 +16,7 @@ public class CycleDetectionTest {
         System.out.println("The graph is " + (isCyclic ? "cyclic!" : "not cyclic!"));
     }
 
-    private static boolean isCyclic(AdjacencyListBasedGraph graph, int V) {
+    private static boolean isCyclic(AdjacencyListBasedUndirectedGraph graph, int V) {
         boolean[] visited = new boolean[V];
 
         for (int node : graph.getNodes()) {
@@ -27,7 +29,7 @@ public class CycleDetectionTest {
         return false;
     }
 
-    private static boolean cyclicUtil(int node, boolean[] visited, AdjacencyListBasedGraph graph, int parent) {
+    private static boolean cyclicUtil(int node, boolean[] visited, AdjacencyListBasedUndirectedGraph graph, int parent) {
         visited[node] = true;
         for (int n : graph.getNeighboursOf(node)) {
             if (!visited[n]) {

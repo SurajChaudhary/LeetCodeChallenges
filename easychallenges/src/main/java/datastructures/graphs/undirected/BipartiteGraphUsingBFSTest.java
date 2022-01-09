@@ -1,5 +1,7 @@
 package datastructures.graphs.undirected;
 
+import datastructures.graphs.AdjacencyListBasedUndirectedGraph;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -11,7 +13,7 @@ public class BipartiteGraphUsingBFSTest {
 
     public static void main(String[] args) {
         int V = 8;
-        AdjacencyListBasedGraph listBasedGraph = new AdjacencyListBasedGraph(V);
+        AdjacencyListBasedUndirectedGraph listBasedGraph = new AdjacencyListBasedUndirectedGraph(V);
 
         listBasedGraph.addEdge(0, 1);
         listBasedGraph.addEdge(1, 2);
@@ -28,7 +30,7 @@ public class BipartiteGraphUsingBFSTest {
         System.out.println("The graph " + (isBipartite ? "is a Bipartite graph!!!" : "is not a Bipartite graph!!!"));
     }
 
-    private static boolean isGraphBipartite(int start, AdjacencyListBasedGraph graph, int V) {
+    private static boolean isGraphBipartite(int start, AdjacencyListBasedUndirectedGraph graph, int V) {
         Queue<Integer> q = new LinkedList<>();
         int[] colors = new int[V];
         Arrays.fill(colors, NO_COLOR);
